@@ -14,9 +14,3 @@ PoliteLLM is a "production-ready" microservice that takes your unfiltered, angry
 - **Orchestration:** LiteLLM
 - **Environment:** Python 3.10+
 
-## 🚀 Getting Started
-
-1. **Clone the repo:**
-   ```bash
-   git clone [https://github.com/your-username/politellm.git](https://github.com/your-username/politellm.git)
-   cd politellm
