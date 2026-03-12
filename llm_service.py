@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 import litellm
-from litellm import completion
+from litellm import acompletion
 from observability import polite_logger
 # Load the environment variables from the .env file
 load_dotenv()
@@ -12,7 +12,7 @@ litellm.custom_callbacks = [polite_logger]
 
 MODEL_NAME = "gemini/gemma-3-27b-it"
 
-def translate_to_corporate(rant: str) -> str:
+async def translate_to_corporate(rant: str) -> str:
     system_prompt = (
         "You are an expert in corporate communication and conflict resolution. "
         "Your job is to take the user's angry rant and translate it into completely "
@@ -20,7 +20,7 @@ def translate_to_corporate(rant: str) -> str:
         "but retain a delightfully spiteful undertone."
     )
     
-    response = completion(
+    response = await acompletion(
         model=MODEL_NAME,
         messages=[
             {"role": "system", "content": system_prompt},

@@ -31,7 +31,7 @@ class EvalResponse(BaseModel):
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_rant(request: RantRequest):
     try:
-        translation = translate_to_corporate(request.text)
+        translation = await translate_to_corporate(request.text)
         return TranslationResponse(original=request.text, translation=translation)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -40,10 +40,10 @@ async def translate_rant(request: RantRequest):
 async def process_and_evaluate(request: RantRequest):
     try:
         # 1. Translate
-        translation = translate_to_corporate(request.text)
+        translation = await translate_to_corporate(request.text)
         
         # 2. Evaluate
-        evaluation = evaluate_translation(request.text, translation)
+        evaluation = await evaluate_translation(request.text, translation)
         
         return EvalResponse(
             translation=translation,
