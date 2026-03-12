@@ -1,8 +1,11 @@
 # Ignore environment variables
 .env
 
-# Ignore our local database/metrics
+# Ignore our local database/metrics and log files
 metrics.json
+metrics.jsonl
+*.log
+response*.json
 
 # Ignore Python virtual environments and cache
 venv/
